@@ -11,3 +11,5 @@ module;
 module timeline_scene.channel;
 
 import timeline_scene.event;
+
+std::shared_ptr<class uts::Event> uts::Channel::AddEvent() { return {}; }
