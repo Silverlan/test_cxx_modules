@@ -14,7 +14,6 @@ add_library(test_lib STATIC)
 set(SOURCES
     src/channel.cppm
     src/event.cppm
-    src/scene.cppm
     src/util_timeline_scene.cppm
 )
 
@@ -24,7 +23,6 @@ target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SO
 set(CPP_SOURCES
     src/channel.cpp
     src/event.cpp
-    src/scene.cpp
     src/main.cpp
 )
 

@@ -10,14 +10,7 @@ module;
 
 module timeline_scene.channel;
 
-import timeline_scene.scene;
 import timeline_scene.event;
-
-template<class TChannel, typename... TARGS>
-std::shared_ptr<uts::Channel> uts::Channel::Create(TimelineScene &scene, const std::string &name, TARGS... args)
-{
-	return std::shared_ptr<Channel>(new TChannel(scene, name, std::forward<TARGS>(args)...));
-}
 
 template<class TEvent, typename... TARGS>
 std::shared_ptr<uts::Event> uts::Channel::AddEvent(TARGS... args)
@@ -28,11 +21,9 @@ std::shared_ptr<uts::Event> uts::Channel::AddEvent(TARGS... args)
 	return r;
 }
 
-uts::Channel::Channel(TimelineScene &scene, const std::string &name) : m_scene(scene.shared_from_this()), m_name(name) {}
 void uts::Channel::Initialize() {}
 const std::vector<std::shared_ptr<uts::Event>> &uts::Channel::GetEvents() const { return const_cast<Channel *>(this)->GetEvents(); }
 std::vector<std::shared_ptr<uts::Event>> &uts::Channel::GetEvents() { return m_events; }
-uts::TimelineScene *uts::Channel::GetScene() const { return m_scene.lock().get(); }
 
 void uts::Channel::Tick(double t, double dt) { HandleTick(t, dt); }
 void uts::Channel::Reset()
