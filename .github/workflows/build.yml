@@ -1,0 +1,46 @@
+name: Build MyModuleLib
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Install Clang, CMake, and other dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang cmake build-essential
+
+      # Create a build directory
+      - name: Create build directory
+        run: mkdir -p build
+
+      # Configure the CMake project using Clang
+      - name: Configure with CMake
+        run: |
+          cd build
+          cmake -DCMAKE_CXX_COMPILER=clang++ ..
+
+      # Build the project
+      - name: Build the project
+        run: |
+          cd build
+          cmake --build .
+
+      # Optional: Run tests if you have any
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure
