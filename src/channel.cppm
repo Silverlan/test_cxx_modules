@@ -14,7 +14,8 @@ export namespace uts {
 	class Channel : public std::enable_shared_from_this<Channel> {
 	  public:
 		virtual ~Channel() = default;
-	  protected:
-		std::vector<std::shared_ptr<class Event>> m_events = {};
+
+		template<class TEvent, typename... TARGS>
+		std::shared_ptr<class Event> AddEvent(TARGS... args);
 	};
 };
