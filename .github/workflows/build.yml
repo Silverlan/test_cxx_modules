@@ -31,7 +31,7 @@ jobs:
       - name: Configure with CMake
         run: |
           cd build
-          cmake -DCMAKE_CXX_COMPILER=clang++ ..
+          cmake -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ ..
 
       # Build the project
       - name: Build the project
