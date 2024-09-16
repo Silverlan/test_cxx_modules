@@ -31,7 +31,7 @@ jobs:
           sudo apt-get install ninja-build
 
       # Build with DEFINE_IN_HEADER=0 with clang-18
-      - name: [clang-18] DEFINE_IN_HEADER=0
+      - name: "[clang-18] DEFINE_IN_HEADER=0"
         run: |
           mkdir -p build
           cd build
@@ -40,7 +40,7 @@ jobs:
           rm -f build
 
       # Build with DEFINE_IN_HEADER=1 with clang-18
-      - name: [clang-18] DEFINE_IN_HEADER=0
+      - name: "[clang-18] DEFINE_IN_HEADER=0"
         run: |
           mkdir -p build
           cd build
@@ -49,7 +49,7 @@ jobs:
           rm -f build
 
       # Build with DEFINE_IN_HEADER=0 with clang-19
-      - name: [clang-19] DEFINE_IN_HEADER=0
+      - name: "[clang-19] DEFINE_IN_HEADER=0"
         run: |
           mkdir -p build
           cd build
@@ -58,7 +58,7 @@ jobs:
           rm -f build
 
       # Build with DEFINE_IN_HEADER=1 with clang-19
-      - name: [clang-19] DEFINE_IN_HEADER=0
+      - name: "[clang-19] DEFINE_IN_HEADER=0"
         run: |
           mkdir -p build
           cd build
