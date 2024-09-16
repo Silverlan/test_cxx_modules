@@ -15,7 +15,9 @@ export namespace uts {
 	  public:
 		virtual ~Channel() = default;
 
-		template<class TEvent, typename... TARGS>
-		std::shared_ptr<class Event> AddEvent(TARGS... args);
+		std::shared_ptr<class Event> AddEvent();
+
+		//template<class TEvent, typename... TARGS>
+		//std::shared_ptr<class Event> AddEvent(TARGS... args);
 	};
 };
