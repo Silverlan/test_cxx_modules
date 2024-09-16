@@ -22,7 +22,6 @@ target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SO
 
 set(CPP_SOURCES
     src/channel.cpp
-    src/event.cpp
 )
 
 # Add the module files as sources
