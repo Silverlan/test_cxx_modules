@@ -7,6 +7,7 @@ module;
 #include <memory>
 #include <algorithm>
 #include <string>
+#include <vector>
 
 module timeline_scene.scene;
 
