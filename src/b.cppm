@@ -7,7 +7,7 @@ module;
 export module test_module.event;
 
 export namespace test_module {
-	class Event {
+	class B {
 	  public:
 
 	};
