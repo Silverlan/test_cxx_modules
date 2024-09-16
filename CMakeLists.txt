@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.28)
 
 # Project information
 project(test_lib LANGUAGES CXX)
@@ -30,8 +30,6 @@ set(CPP_SOURCES
 
 # Add the module files as sources
 target_sources(test_lib PRIVATE ${CPP_SOURCES})
-
-target_include_directories(test_lib PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
 # Add include directories if necessary (e.g., headers)
 # target_include_directories(test_lib PUBLIC include)
