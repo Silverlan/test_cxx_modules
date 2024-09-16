@@ -7,6 +7,8 @@ project(test_lib LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+OPTION(DEFINE_IN_HEADER "Define in Header" OFF)
+
 # Add the library (static library)
 add_library(test_lib STATIC)
 
@@ -26,6 +28,10 @@ set(CPP_SOURCES
 
 # Add the module files as sources
 target_sources(test_lib PRIVATE ${CPP_SOURCES})
+
+IF(DEFINE_IN_HEADER)
+    target_compile_definitions(test_lib PUBLIC DEFINE_IN_CLASS)
+ENDIF(DEFINE_IN_HEADER)
 
 # Add include directories if necessary (e.g., headers)
 # target_include_directories(test_lib PUBLIC include)
