@@ -12,16 +12,16 @@ add_library(test_lib STATIC)
 
 # Specify the source files for the modules
 set(SOURCES
-    src/channel.cppm
-    src/event.cppm
-    src/util_timeline_scene.cppm
+    src/a.cppm
+    src/b.cppm
+    src/test_module.cppm
 )
 
 # Add the module files as sources
 target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SOURCES})
 
 set(CPP_SOURCES
-    src/channel.cpp
+    src/a.cpp
 )
 
 # Add the module files as sources

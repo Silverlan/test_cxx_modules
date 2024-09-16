@@ -4,12 +4,11 @@
 
 module;
 
-#include <string>
-#include <memory>
-#include <vector>
+export module test_module.event;
 
-module timeline_scene.channel;
+export namespace test_module {
+	class Event {
+	  public:
 
-import timeline_scene.event;
-
-std::shared_ptr<class uts::Event> uts::Channel::AddEvent() { return {}; }
+	};
+};

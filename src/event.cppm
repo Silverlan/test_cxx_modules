@@ -4,10 +4,10 @@
 
 module;
 
-export module timeline_scene.event;
+export module test_module.event;
 
-export namespace uts {
-	class Event {
+export namespace test_module {
+	class B {
 	  public:
 
 	};

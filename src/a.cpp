@@ -4,17 +4,12 @@
 
 module;
 
-#include <vector>
 #include <string>
 #include <memory>
+#include <vector>
 
-export module test_module.channel;
+module test_module.channel;
 
-export namespace test_module {
-	class A : public std::enable_shared_from_this<Channel> {
-	  public:
-		virtual ~A() = default;
+import test_module.event;
 
-		std::shared_ptr<class Event> AddEvent();
-	};
-};
+std::shared_ptr<class test_module::B> test_module::A::AddEvent() { return {}; }

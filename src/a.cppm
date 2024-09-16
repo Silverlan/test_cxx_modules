@@ -11,10 +11,10 @@ module;
 export module test_module.channel;
 
 export namespace test_module {
-	class A : public std::enable_shared_from_this<Channel> {
+	class A : public std::enable_shared_from_this<A> {
 	  public:
 		virtual ~A() = default;
 
-		std::shared_ptr<class Event> AddEvent();
+		std::shared_ptr<class B> AddEvent();
 	};
 };
