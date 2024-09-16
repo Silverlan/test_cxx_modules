@@ -30,15 +30,6 @@ jobs:
           sudo apt-get install clang-tools-18
           sudo apt-get install ninja-build
 
-      # Build with DEFINE_IN_HEADER=0 with clang-18
-      - name: "[clang-18] DEFINE_IN_HEADER=0"
-        run: |
-          mkdir -p build
-          cd build
-          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-          cmake --build .
-          rm -f build
-
       # Build with DEFINE_IN_HEADER=1 with clang-18
       - name: "[clang-18] DEFINE_IN_HEADER=1"
         run: |
@@ -48,12 +39,12 @@ jobs:
           cmake --build .
           rm -f build
 
-      # Build with DEFINE_IN_HEADER=0 with clang-19
-      - name: "[clang-19] DEFINE_IN_HEADER=0"
+      # Build with DEFINE_IN_HEADER=0 with clang-18
+      - name: "[clang-18] DEFINE_IN_HEADER=0"
         run: |
           mkdir -p build
           cd build
-          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
           cmake --build .
           rm -f build
 
@@ -63,5 +54,14 @@ jobs:
           mkdir -p build
           cd build
           cmake -DDEFINE_IN_HEADER=1 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build .
+          rm -f build
+
+      # Build with DEFINE_IN_HEADER=0 with clang-19
+      - name: "[clang-19] DEFINE_IN_HEADER=0"
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
           cmake --build .
           rm -f build
