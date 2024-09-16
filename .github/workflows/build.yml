@@ -50,7 +50,7 @@ jobs:
       - name: Build the project0
         run: |
           cd build_0
-          cmake --build_0 .
+          cmake --build .
 
       # Configure the CMake project using Clang
       - name: Configure with CMake 1
@@ -62,4 +62,4 @@ jobs:
       - name: Build the project1
         run: |
           cd build_1
-          cmake --build_1 .
+          cmake --build .
