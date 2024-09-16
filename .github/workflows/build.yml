@@ -13,19 +13,15 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Download LLVM tarball
-      - name: Download LLVM tarball
-        run: wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0-rc4/LLVM-19.1.0-rc4-Linux-X64.tar.xz
+      - name: Download clang-19
+        run: |
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0-rc4/LLVM-19.1.0-rc4-Linux-X64.tar.xz
+          tar -xf LLVM-19.1.0-rc4-Linux-X64.tar.xz
 
-      # Extract LLVM tarball
-      - name: Extract LLVM tarball
-        run: tar -xf LLVM-19.1.0-rc4-Linux-X64.tar.xz
-
-      # Install Clang, CMake, and other dependencies
+      # Install Clang-18, CMake, and other dependencies
       - name: Install dependencies
         run: |
           sudo apt install build-essential
@@ -34,38 +30,38 @@ jobs:
           sudo apt-get install clang-tools-18
           sudo apt-get install ninja-build
 
-      # Create a build directory
-      - name: Create build directory
+      # Build with DEFINE_IN_HEADER=0 with clang-18
+      - name: [clang-18] DEFINE_IN_HEADER=0
         run: |
-          mkdir -p build_0
-          mkdir -p build_1
-
-      # Configure the CMake project using Clang
-      - name: DEFINE_IN_HEADER=1
-        run: |
-          cd build_1
-          cmake -DDEFINE_IN_HEADER=1 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-
-      # Build the project
-      - name: Build the project1
-        run: |
-          cd build_1
-          cmake --build .
-
-      # Configure the CMake project using Clang
-      - name: DEFINE_IN_HEADER=0 with clang-18
-        run: |
-          cd build_0
+          mkdir -p build
+          cd build
           cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-
-      # Configure the CMake project using Clang
-      - name: DEFINE_IN_HEADER=0 with clang-19
-        run: |
-          cd build_0
-          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-
-      # Build the project
-      - name: Build the project0
-        run: |
-          cd build_0
           cmake --build .
+          rm -f build
+
+      # Build with DEFINE_IN_HEADER=1 with clang-18
+      - name: [clang-18] DEFINE_IN_HEADER=0
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DDEFINE_IN_HEADER=1 -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build .
+          rm -f build
+
+      # Build with DEFINE_IN_HEADER=0 with clang-19
+      - name: [clang-19] DEFINE_IN_HEADER=0
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build .
+          rm -f build
+
+      # Build with DEFINE_IN_HEADER=1 with clang-19
+      - name: [clang-19] DEFINE_IN_HEADER=0
+        run: |
+          mkdir -p build
+          cd build
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build .
+          rm -f build
