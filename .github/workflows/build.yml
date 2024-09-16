@@ -17,6 +17,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Download LLVM tarball
+      - name: Download LLVM tarball
+        run: wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0-rc4/LLVM-19.1.0-rc4-Linux-X64.tar.xz
+
+      # Extract LLVM tarball
+      - name: Extract LLVM tarball
+        run: tar -xf LLVM-19.1.0-rc4-Linux-X64.tar.xz
+
       # Install Clang, CMake, and other dependencies
       - name: Install dependencies
         run: |
@@ -34,7 +42,7 @@ jobs:
       - name: Configure with CMake
         run: |
           cd build
-          cmake -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=clang++ ..
+          cmake -DCMAKE_C_COMPILER=LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
 
       # Build the project
       - name: Build the project
