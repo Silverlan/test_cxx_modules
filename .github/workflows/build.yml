@@ -41,7 +41,7 @@ jobs:
           mkdir -p build_1
 
       # Configure the CMake project using Clang
-      - name: Configure with CMake 1
+      - name: DEFINE_IN_HEADER=1
         run: |
           cd build_1
           cmake -DDEFINE_IN_HEADER=1 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
@@ -53,7 +53,13 @@ jobs:
           cmake --build .
 
       # Configure the CMake project using Clang
-      - name: Configure with CMake 0
+      - name: DEFINE_IN_HEADER=0 with clang-18
+        run: |
+          cd build_0
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+
+      # Configure the CMake project using Clang
+      - name: DEFINE_IN_HEADER=0 with clang-19
         run: |
           cd build_0
           cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
