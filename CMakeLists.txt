@@ -24,7 +24,10 @@ set(CPP_SOURCES
 target_sources(test_lib PRIVATE ${CPP_SOURCES})
 
 IF(DEFINE_IN_CLASS)
+	message("DEFINE_IN_CLASS is enabled.")
     target_compile_definitions(test_lib PUBLIC DEFINE_IN_CLASS)
+ELSE()
+	message("DEFINE_IN_CLASS is disabled.")
 ENDIF(DEFINE_IN_CLASS)
 
 target_compile_features(test_lib PUBLIC cxx_std_20)
