@@ -1,6 +1,6 @@
 module;
 
-export module test_module.channel;
+export module test_module.a;
 
 export namespace test_module {
 	class A {
