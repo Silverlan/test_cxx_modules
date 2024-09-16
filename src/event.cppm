@@ -4,12 +4,10 @@
 
 module;
 
-#include <memory>
-
 export module timeline_scene.event;
 
 export namespace uts {
-	class Event : public std::enable_shared_from_this<Event> {
+	class Event {
 	  public:
 
 	};

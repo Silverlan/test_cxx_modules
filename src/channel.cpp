@@ -16,9 +16,3 @@ std::shared_ptr<uts::Event> uts::Channel::AddEvent()
 {
 	return {};
 }
-
-/*template<class TEvent, typename... TARGS>
-std::shared_ptr<uts::Event> uts::Channel::AddEvent(TARGS... args)
-{
-	return {};
-}*/
