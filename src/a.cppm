@@ -7,7 +7,7 @@ export namespace test_module {
 	public:
 		virtual ~A() = default;
 
-#if DEFINE_IN_CLASS == 1
+#ifdef DEFINE_IN_CLASS
 		class B* AddB() { return nullptr; }
 #else
 		class B* AddB();
