@@ -1,9 +1,5 @@
 module;
 
-#include <string>
-#include <memory>
-#include <vector>
-
 module test_module.a;
 
 import test_module.b;
