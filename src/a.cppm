@@ -8,9 +8,9 @@ export namespace test_module {
 		virtual ~A() = default;
 
 #ifdef DEFINE_IN_CLASS
-		class B* AddB() { return nullptr; }
+		class B* GetB() { return nullptr; }
 #else
-		class B* AddB();
+		class B* GetB();
 #endif
 	};
 };

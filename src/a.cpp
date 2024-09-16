@@ -9,5 +9,5 @@ module test_module.channel;
 import test_module.event;
 
 #ifndef DEFINE_IN_CLASS
-class test_module::B* test_module::A::AddB() { return nullptr; }
+class test_module::B* test_module::A::GetB() { return nullptr; }
 #endif
