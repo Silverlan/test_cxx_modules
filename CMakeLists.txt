@@ -12,13 +12,24 @@ add_library(test_lib STATIC)
 
 # Specify the source files for the modules
 set(SOURCES
-    src/a.cppm
-    src/b.cppm
-    src/lib.cppm
+    src/channel.cppm
+    src/event.cppm
+    src/scene.cppm
+    src/util_timeline_scene.cppm
 )
 
 # Add the module files as sources
 target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SOURCES})
+
+set(CPP_SOURCES
+    src/channel.cpp
+    src/event.cpp
+    src/scene.cpp
+    src/main.cpp
+)
+
+# Add the module files as sources
+target_sources(test_lib PRIVATE ${CPP_SOURCES})
 
 # Add include directories if necessary (e.g., headers)
 # target_include_directories(test_lib PUBLIC include)
