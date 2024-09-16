@@ -9,6 +9,3 @@ module;
 module timeline_scene.event;
 
 import timeline_scene.channel;
-
-uts::Event::Event(Channel &channel) : m_channel(channel.shared_from_this()) {}
-uts::Channel *uts::Event::GetChannel() const { return m_channel.lock().get(); }
