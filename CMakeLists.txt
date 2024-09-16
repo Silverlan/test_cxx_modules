@@ -18,7 +18,7 @@ set(SOURCES
 )
 
 # Add the module files as sources
-target_sources(test_lib PRIVATE ${SOURCES})
+target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SOURCES})
 
 # Add include directories if necessary (e.g., headers)
 # target_include_directories(test_lib PUBLIC include)
