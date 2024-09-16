@@ -1,5 +1,7 @@
 module;
 
+#define DEFINE_IN_CLASS 1
+
 #include <vector>
 #include <string>
 #include <memory>
@@ -11,6 +13,10 @@ export namespace test_module {
 	public:
 		virtual ~A() = default;
 
-		class B* AddEvent();
+#if DEFINE_IN_CLASS == 1
+		class B* AddB() { return nullptr; }
+#else
+		class B* AddB();
+#endif
 	};
 };
