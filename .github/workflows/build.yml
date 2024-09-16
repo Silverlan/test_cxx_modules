@@ -44,7 +44,7 @@ jobs:
       - name: Configure with CMake 1
         run: |
           cd build_1
-          cmake -DDEFINE_IN_CLASS=1 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DDEFINE_IN_HEADER=1 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
 
       # Build the project
       - name: Build the project1
@@ -56,7 +56,7 @@ jobs:
       - name: Configure with CMake 0
         run: |
           cd build_0
-          cmake -DDEFINE_IN_CLASS=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DDEFINE_IN_HEADER=0 -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
 
       # Build the project
       - name: Build the project0
