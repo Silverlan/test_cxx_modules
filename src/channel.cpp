@@ -11,15 +11,3 @@ module;
 module timeline_scene.channel;
 
 import timeline_scene.event;
-
-template<class TEvent, typename... TARGS>
-std::shared_ptr<uts::Event> uts::Channel::AddEvent(TARGS... args)
-{
-	auto r = Event::template Create<TEvent, TARGS...>(*this, std::forward<TARGS>(args)...);
-	m_events.push_back(r);
-	r->Initialize();
-	return r;
-}
-
-const std::vector<std::shared_ptr<uts::Event>> &uts::Channel::GetEvents() const { return const_cast<Channel *>(this)->GetEvents(); }
-std::vector<std::shared_ptr<uts::Event>> &uts::Channel::GetEvents() { return m_events; }
