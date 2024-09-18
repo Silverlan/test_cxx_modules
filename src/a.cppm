@@ -16,3 +16,7 @@ export namespace test_module {
 #endif
 	};
 };
+
+#ifndef DEFINE_IN_CLASS
+class test_module::B* test_module::A::GetB() { return nullptr; }
+#endif
