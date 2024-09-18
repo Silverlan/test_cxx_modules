@@ -2,13 +2,17 @@ module;
 
 export module test_module.a;
 
+namespace test_module {
+	class B;
+};
+
 export namespace test_module {
 	class A {
 	public:
 #ifdef DEFINE_IN_CLASS
-		class B* GetB() { return nullptr; }
+		B* GetB() { return nullptr; }
 #else
-		class B* GetB();
+		B* GetB();
 #endif
 	};
 };
