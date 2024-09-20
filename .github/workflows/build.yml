@@ -22,47 +22,10 @@ jobs:
           wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0-rc4/LLVM-19.1.0-rc4-Linux-X64.tar.xz
           tar -xf LLVM-19.1.0-rc4-Linux-X64.tar.xz
 
-      # Install Clang-18, CMake, and other dependencies
-      - name: Install dependencies
-        run: |
-          sudo apt install build-essential
-          sudo apt update
-          sudo apt install clang-18
-          sudo apt-get install clang-tools-18
-          sudo apt-get install ninja-build
-
-      # Build with DEFINE_IN_CLASS=ON with clang-18
-      - name: "[clang-18] DEFINE_IN_CLASS=ON"
+      - name: "Build"
         run: |
           rm -rf build
           mkdir -p build
           cd build
-          cmake -DDEFINE_IN_CLASS=ON -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-          cmake --build .
-
-      # Build with DEFINE_IN_CLASS=OFF with clang-18
-      - name: "[clang-18] DEFINE_IN_CLASS=OFF"
-        run: |
-          rm -rf build
-          mkdir -p build
-          cd build
-          cmake -DDEFINE_IN_CLASS=OFF -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang-18 -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-          cmake --build .
-
-      # Build with DEFINE_IN_CLASS=ON with clang-19
-      - name: "[clang-19] DEFINE_IN_CLASS=ON"
-        run: |
-          rm -rf build
-          mkdir -p build
-          cd build
-          cmake -DDEFINE_IN_CLASS=ON -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
-          cmake --build .
-
-      # Build with DEFINE_IN_CLASS=OFF with clang-19
-      - name: "[clang-19] DEFINE_IN_CLASS=OFF"
-        run: |
-          rm -rf build
-          mkdir -p build
-          cd build
-          cmake -DDEFINE_IN_CLASS=OFF -DCMAKE_C_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
           cmake --build .
