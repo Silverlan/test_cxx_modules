@@ -19,8 +19,8 @@ jobs:
 
       - name: Download clang-19
         run: |
-          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0-rc4/LLVM-19.1.0-rc4-Linux-X64.tar.xz
-          tar -xf LLVM-19.1.0-rc4-Linux-X64.tar.xz
+          wget https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.0/LLVM-19.1.0-Linux-X64.tar.xz
+          tar -xf LLVM-19.1.0-Linux-X64.tar.xz
 
       # Install CMake, and other dependencies
       - name: Install dependencies
@@ -34,5 +34,5 @@ jobs:
           rm -rf build
           mkdir -p build
           cd build
-          cmake -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-rc4-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
+          cmake -DCMAKE_CXX_COMPILER=$(pwd)/../LLVM-19.1.0-Linux-X64/bin/clang++ -G "Ninja Multi-Config" -DCMAKE_BUILD_TYPE=Release ..
           cmake --build .
