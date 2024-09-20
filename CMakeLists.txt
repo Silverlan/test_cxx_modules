@@ -10,14 +10,13 @@ add_library(test_lib STATIC)
 set(SOURCES
     src/parent.cppm
     src/child.cppm
-    src/test_module.cppm
 )
 
 target_sources(test_lib PRIVATE FILE_SET cxx_modules TYPE CXX_MODULES FILES ${SOURCES})
 
-#set(CPP_SOURCES
-#    src/a.cpp
-#)
+set(CPP_SOURCES
+    src/child_impl.cpp
+)
 
 target_sources(test_lib PRIVATE ${CPP_SOURCES})
 

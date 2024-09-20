@@ -1,14 +1,14 @@
 module;
 
-#include <vector>
-
 export module test_module.parent;
 
-import test_module.child;
+namespace test_module {
+    struct Child;
+};
 
 export namespace test_module {
 	struct Parent {
-		std::vector<Child> m_children;
+		Child *child;
 	};
 };
 
