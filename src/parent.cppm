@@ -1,6 +1,6 @@
 module;
 
-export module test_module.parent;
+export module test_module:parent;
 
 namespace test_module {
     struct Child;
